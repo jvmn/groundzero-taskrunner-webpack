@@ -1,0 +1,145 @@
+{
+  "name": "@jvmn/groundzero-taskrunner-webpack-webpack",
+  "version": "1.0.0",
+  "description": "Taskrunner for JvM/Neckar Groundzero projects",
+  "keywords": [
+    "taskrunner",
+    "groundzero"
+  ],
+  "author": "Jung von Matt/Neckar - Shachar Leuchter",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvmn/groundzero-taskrunner"
+  },
+  "main": "./cli.js",
+  "bin": {
+    "groundzero": "./cli.js"
+  },
+  "scripts": {
+    "build": "npm-run-all clean:build copy:assets sync:icons build:webpack fractal:build -l --silent",
+    "build:icons": "svg-sprite --config $SPRITE_CONFIG -D $PROJECT_CWD/web-ui/assets/img/sprite-icons $PROJECT_CWD/src/assets/img/sprite-icons/*.svg",
+    "build:icons:release": "svg-sprite --config $SPRITE_CONFIG -D $PROJECT_CWD/release/assets/img/sprite-icons $PROJECT_CWD/src/assets/img/sprite-icons/*.svg",
+    "build:webpack": "webpack --config $WEBPACK_DEV_CONFIG",
+    "build:critical": "webpack --config $WEBPACK_CRITICAL_CONFIG",
+    "build:webpack:prod": "webpack --config $WEBPACK_PROD_CONFIG --output-path $PROJECT_CWD/release/assets/js/min",
+    "build:webpack:cssmodules": "webpack --config $WEBPACK_CSSMOD_CONFIG --output-path $PROJECT_CWD/release/assets/css/modules/temp",
+    "clean:build": "node ./lib/clean --build",
+    "clean:fractal": "node ./lib/clean --webui",
+    "clean:release": "node ./lib/clean --release",
+    "clean:cssmod": "node ./lib/clean --cssmod",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "copy:assets": "node ./lib/copy-assets",
+    "copy:assets:release": "node ./lib/copy-assets --release",
+    "copy:icons": "node ./lib/copy-icons",
+    "copy:icons:release": "node ./lib/copy-icons --release",
+    "deploy": "node ./lib/rsync",
+    "deploy:all": "node ./lib/rsync --all",
+    "deploy:feature": "node ./lib/rsync --feature",
+    "deploy:feature:all": "node ./lib/rsync --feature --all",
+    "deploy:feature:stage": "node ./lib/rsync --feature --stage",
+    "deploy:stage": "node ./lib/rsync --stage",
+    "dev": "npm-run-all copy:assets sync:icons --parallel watch:* fractal:server -l -r --silent",
+    "fractal:build": "node ./lib/fractal-build",
+    "fractal:export": "node ./lib/fractal-export",
+    "fractal:server": "node ./lib/fractal-start",
+    "imagemin": "node ./lib/imagemin",
+    "newpattern": "node ./lib/newpattern",
+    "optimize:assets": "run-s copy:assets imagemin",
+    "pkg:release": "groundzero-changelog",
+    "pkg:publish": "npm publish --access public",
+    "precommit": "lint-staged",
+    "predeploy": "run-s build",
+    "release": "npm-run-all clean:release copy:assets:release release:sync:icons release:webpack release:critical build:webpack fractal:export -l --silent",
+    "release:cssmod": "npm-run-all clean:release copy:assets:release release:sync:icons release:webpack release:cssmodules clean:cssmod release:critical build:webpack fractal:export -l --silent",
+    "release:sync:icons": "run-s copy:icons:release build:icons:release",
+    "release:webpack": "webpack --config $WEBPACK_PROD_CONFIG",
+    "release:critical": "webpack --config $WEBPACK_CRITICAL_CONFIG",
+    "release:cssmodules": "webpack --config $WEBPACK_CSSMOD_CONFIG",
+    "sync:icons": "run-s copy:icons build:icons",
+    "watch:icons": "onchange $PROJECT_CWD'/src/assets/img/sprite-icons/*.svg' -- npm run sync:icons",
+    "watch:webpack": "webpack --config $WEBPACK_DEV_CONFIG --watch",
+    "watch:critical": "webpack --config $WEBPACK_CRITICAL_CONFIG --watch",
+    "jest": "jest"
+  },
+  "fractal": {
+    "main": "fractal-config.js"
+  },
+  "jvmChangelog": {
+    "gitRepo": "https://github.com/jvmn/groundzero-taskrunner-webpack",
+    "gitPlatform": "github",
+    "ignores": [
+      "build",
+      "revert",
+      "test"
+    ],
+    "extraComments": [
+      "Breaking changes"
+    ]
+  },
+  "lint-staged": {
+    "**/*.js": "eslint"
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "IE 11"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@frctl/fractal": "1.2.1",
+    "@frctl/twig": "^1.0.0",
+    "@jvmn/groundzero-changelog": "^1.7.0",
+    "@jvmn/upload-rsync": "^0.0.9",
+    "autoprefixer": "^9.7.3",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.3.0",
+    "cssnano": "^4.1.10",
+    "fs-extra": "^8.1.0",
+    "git-rev": "^0.2.1",
+    "globby": "^10.0.1",
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "inquirer": "^7.0.0",
+    "jest": "^24.8.0",
+    "lodash": "^4.17.14",
+    "mini-css-extract-plugin": "^0.8.0",
+    "minimist": "^1.2.0",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "path": "^0.12.7",
+    "postcss": "^7.0.24",
+    "postcss-loader": "^3.0.0",
+    "pretty": "^2.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "svg-sprite": "^1.5.0",
+    "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "acorn": "^7.1.0",
+    "ajv": "^6.9.1",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "stylelint": "^12.0.0",
+    "stylelint-config-recommended": "^3.0.0"
+  }
+}
