@@ -90,7 +90,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
     "@frctl/fractal": "1.2.1",
-    "@frctl/twig": "^1.0.0",
+    "@frctl/twig": "1.0.0-beta.5",
     "@jvmn/groundzero-changelog": "^1.7.0",
     "@jvmn/upload-rsync": "^0.0.9",
     "autoprefixer": "^9.7.3",
