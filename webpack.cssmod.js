@@ -1,5 +1,6 @@
 const path = require('path')
 const globby = require('globby')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -13,8 +14,8 @@ const moduleEntries = () => globby.sync(srcPath + '/**/*.module.scss').reduce((m
   modules[name] = path
   return modules
 }, {})
-const criticalEntries = () => globby.sync(srcPath + '/**/*.critical.scss').reduce((modules, path) => {
-  const name = path.split('\\').pop().split('/').pop().replace('.critical.scss', '')
+const criticalEntries = () => globby.sync(srcPath + '/**/*.(critical|amp).scss').reduce((modules, path) => {
+  const name = path.split('\\').pop().split('/').pop().replace(/\.(critical|amp)\.scss$/, '')
   modules[name] = path
   return modules
 }, {})
@@ -55,6 +56,10 @@ module.exports = {
     minimizer: [new TerserJSPlugin({}), new OptimizeCssAssetsPlugin({})],
   },
   plugins: [
+    new CleanWebpackPlugin({
+      // clean web-ui output folder before watch and build
+      cleanAfterEveryBuildPatterns: ['*']
+    }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorPluginOptions: {
@@ -154,9 +159,9 @@ module.exports = {
           },
         ]
       },
-      // handle critical css
+      // handle critical/amp css
       {
-        test: /\.critical\.scss$/,
+        test: /\.(critical|amp)\.scss$/,
         loader: [
           MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
