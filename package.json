@@ -62,7 +62,6 @@
     "sync:icons": "run-s copy:icons build:icons",
     "watch:icons": "onchange $PROJECT_CWD'/src/assets/img/sprite-icons/*.svg' -- npm run sync:icons",
     "watch:webpack": "webpack --config $WEBPACK_DEV_CONFIG --watch",
-    "watch:critical": "webpack --config $WEBPACK_CRITICAL_CONFIG --watch",
     "jest": "jest"
   },
   "fractal": {
@@ -102,6 +101,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.3.0",
     "cssnano": "^4.1.10",
+    "csso": "^4.0.2",
     "fs-extra": "^8.1.0",
     "git-rev": "^0.2.1",
     "globby": "^10.0.1",
