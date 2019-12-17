@@ -68,11 +68,7 @@
   "jvmChangelog": {
     "gitRepo": "https://github.com/jvmn/groundzero-taskrunner-webpack",
     "gitPlatform": "github",
-    "ignores": [
-      "build",
-      "revert",
-      "test"
-    ],
+    "ignores": [],
     "extraComments": [
       "Breaking changes"
     ]
