@@ -1,6 +1,15 @@
 
  *** 
 
+# [1.1.1](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.1.0...1.1.1) (17.12.2019)
+
+ ### Build
+
+* **changelog:**  clear ignores ([6cb0fb6](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/6cb0fb6)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @17.12.2019_
+* **twig:**  lock fractal packages ([26305bc](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/26305bc)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @17.12.2019_
+
+ *** 
+
 # [1.1.0](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.0.2...1.1.0) (13.12.2019)
 
  ### Features

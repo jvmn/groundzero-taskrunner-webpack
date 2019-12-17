@@ -1,6 +1,6 @@
 {
   "name": "@jvmn/groundzero-taskrunner-webpack",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Taskrunner for JvM/Neckar Groundzero projects",
   "keywords": [
     "taskrunner",
@@ -68,7 +68,9 @@
   "jvmChangelog": {
     "gitRepo": "https://github.com/jvmn/groundzero-taskrunner-webpack",
     "gitPlatform": "github",
-    "ignores": [],
+    "ignores": [
+      "revert"
+    ],
     "extraComments": [
       "Breaking changes"
     ]
