@@ -1,6 +1,6 @@
 {
   "name": "@jvmn/groundzero-taskrunner-webpack",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Taskrunner for JvM/Neckar Groundzero projects",
   "keywords": [
     "taskrunner",
@@ -69,9 +69,7 @@
     "gitRepo": "https://github.com/jvmn/groundzero-taskrunner-webpack",
     "gitPlatform": "github",
     "ignores": [
-      "build",
-      "revert",
-      "test"
+      "revert"
     ],
     "extraComments": [
       "Breaking changes"
@@ -90,7 +88,10 @@
     "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
     "@frctl/fractal": "1.2.1",
-    "@frctl/twig": "1.0.0-beta.5",
+    "@frctl/handlebars": "1.1.5",
+    "@frctl/mandelbrot": "1.2.1",
+    "@frctl/twig": "1.0.0",
+    "twig": "1.13.3",
     "@jvmn/groundzero-changelog": "^1.7.0",
     "@jvmn/upload-rsync": "^0.0.9",
     "autoprefixer": "^9.7.3",
