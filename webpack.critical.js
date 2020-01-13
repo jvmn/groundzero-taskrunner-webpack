@@ -74,6 +74,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              url: false, // use relative urls to to the css folder
               modules: false,
               sourceMap: true
             }
@@ -84,7 +85,7 @@ module.exports = {
             options: {
               ident: 'postcss',
               plugins: [
-                require('autoprefixer')(),
+                require('autoprefixer')({ grid: 'autoplace' }),
               ]
             }
           },
