@@ -1,6 +1,6 @@
 const merge = require('webpack-merge')
 const fs = require('fs')
-
+const webpack = require('webpack')
 let baseConfig
 // check if we have a webpack.config in project root
 try {
@@ -17,6 +17,11 @@ try {
 
 module.exports = merge(baseConfig, {
   mode: 'development',
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'dev' // use 'development' unless process.env.NODE_ENV is defined
+    }),
+  ],
   stats: {
     assets: false,
     cached: false,
