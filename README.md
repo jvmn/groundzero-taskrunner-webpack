@@ -26,7 +26,9 @@ In charge of running the dev / build / release / deploy / newpattern toolchain f
 For development of the ***taskrunner***, you would want to:
 1) clone the repo and install it.
 2) clone the latest groundzero-pattern repo, install it and run within-it: 
-```
-npm link path/to/taskrunner
-````
+    ```
+    npm link path/to/taskrunner
+    ```
+    **path**: to get full path run `pwd` in terminal
+
 3) this would map the taskrunner repo to run as a native node_modules package in the groundzero-pattern, giving you the ability to develope without the need to rebuild and quickly run the tasks against a sample groundzero project

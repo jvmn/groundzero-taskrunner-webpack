@@ -1,6 +1,23 @@
 
  *** 
 
+# [1.2.0](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.1.2...1.2.0) (03.03.2020)
+
+ ### Breaking changes 
+ * Now sets css require in js pattern to load in dev mode only. i.e removes css from bundle in production. Simply remove the condition if needed in production.
+ ### Chores
+
+* **pkg:**  update dependencies ([3cb6d86](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/3cb6d86)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @03.03.2020_
+* **pkg:**  update lock ([73a663b](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/73a663b)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @03.03.2020_
+ ### Documentation
+
+* **readme:**  add pwd hint ([d10edbf](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/d10edbf)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @03.03.2020_
+ ### Features
+
+* **pattern:**  use css in js if dev only ([356eef3](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/356eef3)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @03.03.2020_
+
+ *** 
+
 # [1.1.2](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.1.1...1.1.2) (13.01.2020)
 
  ### Breaking changes 
