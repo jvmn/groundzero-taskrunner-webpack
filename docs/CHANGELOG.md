@@ -1,6 +1,23 @@
 
  *** 
 
+# [1.3.0](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.2.0...1.3.0) (06.03.2020)
+
+ ### Breaking changes 
+ * **browserlist:** remove dead browser support via "not dead" flag
+
+ ### New Features
+ * **critical-css:** function now accepts optional autoprifixer via param
+ 
+ ### Build
+
+* **pkg:**  broswerlist add not dead ([16961fd](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/16961fd)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @06.03.2020_
+ ### Features
+
+* **critical:**  autoprifixer optional via param ([f292c24](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/f292c24)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @06.03.2020_
+
+ *** 
+
 # [1.2.0](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.1.2...1.2.0) (03.03.2020)
 
  ### Breaking changes 
