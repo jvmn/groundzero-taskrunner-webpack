@@ -19,23 +19,18 @@ bluebird.config({
 
 /*
  * Configure a Fractal instance.
- *
- * This configuration could also be done in a separate file, provided that this file
- * then imported the configured fractal instance from it to work with in your Gulp tasks.
- * i.e. const fractal = require('./my-fractal-config-file');
  */
 
 /*
 * Give your project meta data.
+* imported from the project.config.js
 */
-fractal.set('project.title', config.fractal.title)
-fractal.set('project.info', config.fractal.info)
-fractal.set('project.url', config.fractal.url)
-fractal.set('project.version', packageJson.version)
-fractal.set('project.author', 'Jung von Matt/Neckar')
+for (const key in config.fractal) {
+  console.log(key, config.fractal[key])
+  fractal.set('project.' + key, config.fractal[key])
+}
 fractal.set('project.buildDate', new Date())
-fractal.set('project.namespace', 'AP_')
-fractal.set('project.gitrepo', config.fractal.gitrepo)
+fractal.set('project.version', packageJson.version)
 
 /**
  * set file variables for file headers which will be set by preprocessor
@@ -108,9 +103,9 @@ const groundzeroTheme = require('@frctl/mandelbrot')({
 })
 
 // specify a static directory to hold the theme override css
-const dir = path.join(process.env.PROJECT_CWD, 'theme-overrides')
-const mount = 'theme-overrides'
-groundzeroTheme.addStatic(dir, mount)
+const mount = path.join(process.env.PROJECT_CWD, 'theme-overrides')
+groundzeroTheme.addStatic(mount, 'theme-overrides')
+groundzeroTheme.addLoadPath(mount + '/views')
 
 fractal.web.theme(groundzeroTheme)
 
