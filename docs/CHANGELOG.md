@@ -1,6 +1,21 @@
 
  *** 
 
+# [1.4.0](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.3.0...1.4.0) (19.03.2020)
+
+ ### Breaking changes 
+ * remove all optional fractal project configs to be declared in the project config
+
+
+ ### Chores
+
+* **pattern:**  add theme option ([eb5225a](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/eb5225a)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @19.03.2020_
+ ### Features
+
+* **fractal:**  added support for themes in config, addLoadPath to allow mandelbrot theme overrides ([d9c45dc](https://github.com/jvmn/groundzero-taskrunner-webpack/commit/d9c45dc)) _by [Shachar Leuchter](shachar.leuchter@jvm.de) @19.03.2020_
+
+ *** 
+
 # [1.3.0](https://github.com/jvmn/groundzero-taskrunner-webpack/compare/1.2.0...1.3.0) (06.03.2020)
 
  ### Breaking changes 
