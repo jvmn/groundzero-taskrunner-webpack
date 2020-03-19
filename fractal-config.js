@@ -26,7 +26,6 @@ bluebird.config({
 * imported from the project.config.js
 */
 for (const key in config.fractal) {
-  console.log(key, config.fractal[key])
   fractal.set('project.' + key, config.fractal[key])
 }
 fractal.set('project.buildDate', new Date())
