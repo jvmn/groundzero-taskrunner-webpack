@@ -9,7 +9,7 @@
   "author": "Jung von Matt/Neckar - Shachar Leuchter",
   "license": "MIT",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=12.0.0"
   },
   "repository": {
     "type": "git",
@@ -98,7 +98,7 @@
     "@frctl/handlebars": "1.1.5",
     "@frctl/mandelbrot": "1.2.1",
     "@frctl/twig": "1.0.0",
-    "@jvmn/groundzero-changelog": "^1.7.0",
+    "@jvmn/groundzero-changelog": "^1.8.0",
     "@jvmn/upload-rsync": "^0.0.9",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
