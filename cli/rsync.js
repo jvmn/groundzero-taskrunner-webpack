@@ -38,14 +38,14 @@ if (args.feature) {
   options = ':feature' + options
 }
 
-const child = spawn(`npm explore @jvmn/groundzero-taskrunner-webpack -- npm run deploy${options}`, {
+const child = spawn(`npm explore @jvmn/groundzero-taskrunner-webpack -- npm run rsync${options}`, {
   stdio: 'inherit',
   env: process.env,
   shell: true
 })
 
 child.on('error', err => {
-  error(`CLI Deploy -> ${err}`, true)
+  error(`CLI Rsync -> ${err}`, true)
 })
 
 if (child.stdin) {

@@ -33,6 +33,10 @@ case 'deploy':
   require('./cli/deploy')
   break
 
+case 'rsync':
+  require('./cli/rsync')
+  break
+
 case 'newpattern':
   require('./cli/newpattern')
   break
