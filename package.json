@@ -1,6 +1,6 @@
 {
   "name": "@jvmn/groundzero-taskrunner-webpack",
-  "version": "2.0.0-rc1",
+  "version": "2.0.0",
   "description": "Taskrunner for JvM/Neckar Groundzero projects",
   "keywords": [
     "taskrunner",
