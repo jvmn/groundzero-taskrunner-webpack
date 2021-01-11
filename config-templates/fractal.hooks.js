@@ -7,6 +7,12 @@
 */
 
 module.exports = {
+  mandelbrot: {},
+  server: {
+    // syncOptions: {
+    //   open: 'local', // the browser
+    // }
+  },
   hooks: {
     'components': {
       'engine': {
