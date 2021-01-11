@@ -89,10 +89,11 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({ grid: 'autoplace' }),
-              ]
+              postcssOptions: {
+                plugins: [
+                  require('autoprefixer')({ grid: 'autoplace' }),
+                ]
+              }
             }
           },
           // Compiles Sass to CSS
@@ -130,10 +131,11 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({ grid: 'autoplace' }),
-              ]
+              postcssOptions: {
+                plugins: [
+                  require('autoprefixer')({ grid: 'autoplace' }),
+                ]
+              }
             }
           },
           // Compiles Sass to CSS
