@@ -70,7 +70,7 @@ fractal.web.set('server', {
   watch: true,
   logLevel: 'debug',
   syncOptions: {
-    open: 'local', // the browser
+    // open: 'local', // the browser
     // browser: ['google chrome'],
     notify: true,
     watchOptions: {
