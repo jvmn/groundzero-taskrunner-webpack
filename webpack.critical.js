@@ -74,6 +74,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              esModule: false,
               url: false, // use relative urls to to the css folder
               modules: false,
               sourceMap: true
@@ -100,10 +101,10 @@ module.exports = {
                   includePaths: [srcPath + '/']
                 }
               },
-              prependData: () => {
+              additionalData: (content) => {
                 // Inject package version
                 const versionString = '/*! @preserve: Version: '+packageJson.version+', Build date: '+ new Date().toISOString() + ' */\n\n'
-                return `${versionString}`
+                return `${versionString} ${content}`
               },
               sourceMap: true
             }

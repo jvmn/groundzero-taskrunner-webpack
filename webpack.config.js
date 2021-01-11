@@ -70,11 +70,17 @@ module.exports = {
         test: /\.module\.scss$/,
         use: [
           // Creates `style` nodes from JS strings
-          'style-loader',
+          {
+            loader: 'style-loader',
+            options: {
+              esModule: false
+            }
+          },
           // Translates CSS into CommonJS
           {
             loader: 'css-loader',
             options: {
+              esModule: false,
               modules: false,
               sourceMap: true
             }
@@ -93,12 +99,12 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              prependData: (loaderContext) => {
+              additionalData: (content, loaderContext) => {
                 // Inject global scss vars/mixins before each module
                 const { rootContext } = loaderContext
                 const injectPath = path.resolve(rootContext, './globals/style/_modules_inject')
                 const versionString = '/*! @preserve: Version: '+packageJson.version+', Build date: '+ new Date().toISOString() + ' */\n\n'
-                return `${versionString} @import "${injectPath}";`
+                return `${versionString} @import "${injectPath}"; ${content}`
               },
               sourceMap: true
             }
@@ -114,6 +120,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              esModule: false,
               url: false, // use relative urls to to the css folder
               modules: false,
               sourceMap: true
@@ -140,10 +147,10 @@ module.exports = {
                   includePaths: [srcPath + '/']
                 }
               },
-              prependData: () => {
+              additionalData: (content) => {
                 // Inject package version
                 const versionString = '/*! @preserve: Version: '+packageJson.version+', Build date: '+ new Date().toISOString() + ' */\n\n'
-                return `${versionString}`
+                return `${versionString} ${content}`
               },
               sourceMap: true
             }
