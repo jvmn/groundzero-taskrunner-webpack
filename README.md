@@ -31,7 +31,7 @@ For development of the ***taskrunner***, you would want to:
     ```
     **path**: to get full path run `pwd` in terminal
 
-3) this would map the taskrunner repo to run as a native node_modules package in the groundzero-pattern, giving you the ability to develope without the need to rebuild and quickly run the tasks against a sample groundzero project
+3) this would map the taskrunner repo to run as a native node_modules package in the groundzero-pattern, giving you the ability to develop without the need to rebuild and quickly run the tasks against a sample groundzero project
 
 ## Publish on npm
 
