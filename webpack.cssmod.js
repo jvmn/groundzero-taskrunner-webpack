@@ -53,7 +53,16 @@ module.exports = {
     }
   },
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCssAssetsPlugin({})],
+    minimizer: [
+      new TerserJSPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      }),
+      new OptimizeCssAssetsPlugin({})
+    ],
   },
   plugins: [
     new CleanWebpackPlugin({
@@ -85,6 +94,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              esModule: false,
               modules: false,
               sourceMap: true
             }
@@ -93,22 +103,23 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({ grid: 'autoplace' }),
-              ]
+              postcssOptions: {
+                plugins: [
+                  require('autoprefixer')
+                ]
+              }
             }
           },
           // Compiles Sass to CSS
           {
             loader: 'sass-loader',
             options: {
-              prependData: (loaderContext) => {
+              additionalData: (content, loaderContext) => {
                 // Inject global scss vars/mixins before each module
                 const { rootContext } = loaderContext
                 const injectPath = path.resolve(rootContext, './globals/style/_modules_inject')
                 const versionString = '/*! @preserve: Version: '+packageJson.version+', Build date: '+ new Date().toISOString() + ' */\n\n'
-                return `${versionString} @import "${injectPath}";`
+                return `${versionString} @import "${injectPath}"; ${content}`
               },
               sourceMap: true
             }
@@ -124,6 +135,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              esModule: false,
               url: false, // use relative urls to to the css folder
               modules: false,
               sourceMap: true
@@ -133,10 +145,11 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({ grid: 'autoplace' }),
-              ]
+              postcssOptions: {
+                plugins: [
+                  require('autoprefixer')
+                ]
+              }
             }
           },
           // Compiles Sass to CSS
@@ -150,10 +163,10 @@ module.exports = {
                   includePaths: [srcPath + '/']
                 }
               },
-              prependData: () => {
+              additionalData: (content) => {
                 // Inject package version
                 const versionString = '/*! @preserve: Version: '+packageJson.version+', Build date: '+ new Date().toISOString() + ' */\n\n'
-                return `${versionString}`
+                return `${versionString} ${content}`
               },
               sourceMap: true
             }
@@ -169,6 +182,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              esModule: false,
               url: false, // use relative urls to to the css folder
               modules: false,
               sourceMap: true
@@ -178,10 +192,11 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer')({ grid: 'autoplace' }),
-              ]
+              postcssOptions: {
+                plugins: [
+                  require('autoprefixer')
+                ]
+              }
             }
           },
           // Compiles Sass to CSS
@@ -195,10 +210,10 @@ module.exports = {
                   includePaths: [srcPath + '/']
                 }
               },
-              prependData: () => {
+              additionalData: (content) => {
                 // Inject package version
                 const versionString = '/*! @preserve: Version: '+packageJson.version+', Build date: '+ new Date().toISOString() + ' */\n\n'
-                return `${versionString}`
+                return `${versionString} ${content}`
               },
               sourceMap: true
             }

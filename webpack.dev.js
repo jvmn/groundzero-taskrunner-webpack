@@ -1,4 +1,4 @@
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const fs = require('fs')
 const webpack = require('webpack')
 let baseConfig
@@ -35,6 +35,6 @@ module.exports = merge(baseConfig, {
     chunkOrigins: false,
     colors: true
   },
-  devtool: '#inline-source-map', // for speed
-  // devtool: 'source-map', // for debugging
+  // https://webpack.js.org/configuration/devtool/ for other options
+  devtool: 'eval-cheap-source-map',
 })
