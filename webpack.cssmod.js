@@ -96,7 +96,7 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  require('autoprefixer')({ grid: 'autoplace' }),
+                  require('autoprefixer')
                 ]
               }
             }
@@ -138,7 +138,7 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  require('autoprefixer')({ grid: 'autoplace' }),
+                  require('autoprefixer')
                 ]
               }
             }
@@ -185,7 +185,7 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  require('autoprefixer')({ grid: 'autoplace' }),
+                  require('autoprefixer')
                 ]
               }
             }
