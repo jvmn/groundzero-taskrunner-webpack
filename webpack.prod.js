@@ -33,7 +33,16 @@ module.exports = merge(baseConfig, {
     filename: 'jvm-[name].min.js'
   },
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCssAssetsPlugin({})],
+    minimizer: [
+      new TerserJSPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      }),
+      new OptimizeCssAssetsPlugin({})
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
