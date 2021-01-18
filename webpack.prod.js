@@ -29,7 +29,7 @@ module.exports = merge(baseConfig, {
   devtool: 'source-map',
   output: {
     path: distPath,
-    chunkFilename: 'jvm-[name]-[hash].min.js',
+    chunkFilename: 'jvm-[name]-[fullhash].min.js',
     filename: 'jvm-[name].min.js'
   },
   optimization: {
@@ -57,14 +57,14 @@ module.exports = merge(baseConfig, {
     new MiniCssExtractPlugin({
       // path is relative to the distPath, see prod path
       filename: '../../css/[name].min.css',
-      chunkFilename:'../../css/[id].[hash].css'
+      chunkFilename:'../../css/[id].[fullhash].css'
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'
     }),
     new webpack.BannerPlugin({
       // print comments on top of each bundle file
-      banner: `! @preserve: Release version: ${JSON.stringify(VERSION)}, Build date: ${JSON.stringify(FULLBUILD)}, hash:[hash], chunkhash:[chunkhash], name:[name]`
+      banner: `! @preserve: Release version: ${JSON.stringify(VERSION)}, Build date: ${JSON.stringify(FULLBUILD)}, hash:[fullhash], chunkhash:[chunkhash], name:[name]`
     }),
     // don't create too small chunks here..
     // if you only want one large chunk you can set this to higher values
