@@ -3,7 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const getProjectJsonPath = () => `${process.env.PROJECT_CWD}/package.json`
@@ -41,7 +41,16 @@ module.exports = merge(baseConfig, {
           }
         }
       }),
-      new OptimizeCssAssetsPlugin({})
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
     ],
   },
   plugins: [
@@ -49,13 +58,6 @@ module.exports = merge(baseConfig, {
       // path is relative to the distPath, see prod path
       filename: '../../css/[name].min.css',
       chunkFilename:'../../css/[id].[hash].css'
-    }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static'
