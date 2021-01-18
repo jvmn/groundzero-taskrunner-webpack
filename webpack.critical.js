@@ -2,7 +2,7 @@ const path = require('path')
 const globby = require('globby')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageJson = require(path.resolve(process.env.PROJECT_CWD + '/package.json'))
 const projectPath = require(path.resolve(process.env.PWD + '/paths.config.js'))
@@ -44,19 +44,24 @@ module.exports = {
     alias: { ...aliasEntries() }
   },
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCssAssetsPlugin({})],
+    minimizer: [
+      new TerserJSPlugin({}),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
   },
   plugins: [
     new CleanWebpackPlugin({
       // clean web-ui output folder before watch and build
       cleanAfterEveryBuildPatterns: ['*']
-    }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: false } }],
-      },
-      canPrint: true
     }),
     new MiniCssExtractPlugin({
       filename: '../[name].css',
