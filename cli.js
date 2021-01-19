@@ -29,6 +29,10 @@ case 'release':
   require('./cli/release')
   break
 
+case 'export':
+  require('./cli/export')
+  break
+  
 case 'deploy':
   require('./cli/deploy')
   break
