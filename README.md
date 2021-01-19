@@ -12,7 +12,10 @@ In charge of running the dev / build / release / deploy / newpattern toolchain f
     ```
     npm install @jvmn/groundzero-taskrunner-webpack --save-dev
     ```
-
+  * if you use `Twig` as your template engine you need to install them as peer dependencies
+    ```
+    npm install @jvmn/groundzero-taskrunner-webpack twig @frctl/twig --save-dev
+    ```
 2) get all coomand options by running from the terminal:
     ```
     groundzero help

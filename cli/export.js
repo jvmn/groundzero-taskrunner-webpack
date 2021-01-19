@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+'use strict'
+
+const { spawn } = require('child_process')
+const error = require('../lib/error')
+// expose project root folder varialbe to load configs in npm
+process.env.PROJECT_CWD = process.env.PWD
+
+
+const child = spawn(`npm explore @jvmn/groundzero-taskrunner-webpack -- npm run fractal:export`, {
+  stdio: 'inherit',
+  env: process.env,
+  shell: true
+})
+
+child.on('error', err => {
+  error(`CLI Export -> ${err}`, true)
+})
+
+if (child.stdin) {
+  process.stdin.pipe(child.stdin)
+}
+
+if (child.stdout) {
+  child.stdout.on('data', (data) => {
+    console.log(`child stdout:\n${data}`)
+  })
+}
