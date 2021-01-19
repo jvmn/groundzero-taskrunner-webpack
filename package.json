@@ -1,6 +1,6 @@
 {
   "name": "@jvmn/groundzero-taskrunner-webpack",
-  "version": "2.2.0-rc",
+  "version": "2.2.0",
   "description": "Taskrunner for JvM/Neckar Groundzero projects",
   "keywords": [
     "taskrunner",
@@ -133,7 +133,7 @@
     "svg-sprite": "^1.5.0",
     "webpack": "^5.15.0",
     "webpack-bundle-analyzer": "^4.3.0",
-    "webpack-cli": "^4.3.1",
+    "webpack-cli": "^4.4.0",
     "webpack-merge": "^5.7.3"
   },
   "devDependencies": {
