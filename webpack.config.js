@@ -11,9 +11,9 @@ let babelConfig
 try {
   fs.accessSync(`${process.env.PROJECT_CWD}/babel.config.js`, fs.constants.R_OK | fs.constants.W_OK)
   babelConfig = `${process.env.PROJECT_CWD}/babel.config.js`
-  console.error('use babel project config!')
+  console.error('✳️  using local babel config!')
 } catch (err) {
-  console.error('use babel package config!')
+  console.error('⚛︎  using Taskrunner babel config!')
   babelConfig = `./babel.config.js`
 }
 
@@ -115,8 +115,13 @@ module.exports = {
       // handle global css
       {
         test: /\.global\.scss$/,
-        loader: [
-          MiniCssExtractPlugin.loader,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false
+            },
+          },
           // Translates CSS into CommonJS
           {
             loader: 'css-loader',

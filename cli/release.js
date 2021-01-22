@@ -12,45 +12,45 @@ const config = require(getProjectConfig())
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/webpack.dev.js`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.WEBPACK_DEV_CONFIG = `${process.env.PROJECT_CWD}/webpack.dev.js`
-  console.log('-> using webpack.dev project config!')
+  console.log('✳️  using local webpack.dev config')
 } catch (err) {
-  console.log('-> using webpack.dev package config!')
+  console.log('⚛︎  using Taskrunner webpack.dev config!')
   process.env.WEBPACK_DEV_CONFIG = `./webpack.dev.js`
 }
 // check if we have a webpack.prod config in project root
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/webpack.prod.js`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.WEBPACK_PROD_CONFIG = `${process.env.PROJECT_CWD}/webpack.prod.js`
-  console.log('-> using webpack.prod project config!')
+  console.log('✳️  using local webpack.prod config !')
 } catch (err) {
-  console.log('-> using webpack.prod package config!')
+  console.log('⚛︎  using Taskrunner webpack.prod config !')
   process.env.WEBPACK_PROD_CONFIG = `./webpack.prod.js`
 }
 // check if we have a webpack.cssmod config in project root
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/webpack.cssmod.js`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.WEBPACK_CSSMOD_CONFIG = `${process.env.PROJECT_CWD}/webpack.cssmod.js`
-  console.log('-> using webpack.cssmod project config!')
+  console.log('✳️  using local webpack.cssmod config !')
 } catch (err) {
-  console.log('-> using webpack.cssmod package config!')
+  console.log('⚛︎  using Taskrunner webpack.cssmod config !')
   process.env.WEBPACK_CSSMOD_CONFIG = `./webpack.cssmod.js`
 }
 // check if we have a webpack.critical config in project root
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/webpack.critical.js`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.WEBPACK_CRITICAL_CONFIG = `${process.env.PROJECT_CWD}/webpack.critical.js`
-  console.log('-> using webpack.critical project config!')
+  console.log('✳️  using local webpack.critical config !')
 } catch (err) {
-  console.log('-> using webpack.critical package config!')
+  console.log('⚛︎  using Taskrunner webpack.critical config!')
   process.env.WEBPACK_CRITICAL_CONFIG = `./webpack.critical.js`
 }
 // check if we have a svg-sprite config in project root
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/svg-sprite.config.json`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.SPRITE_CONFIG = `${process.env.PROJECT_CWD}/svg-sprite.config.json`
-  console.log('-> using svg-sprite.config project config!')
+  console.log('✳️  using local svg-sprite.config !')
 } catch (err) {
-  console.log('-> using svg-sprite.config package config!')
+  console.log('⚛︎  using Taskrunner svg-sprite.config !')
   process.env.SPRITE_CONFIG = `./svg-sprite.config.json`
 }
 

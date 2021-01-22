@@ -13,18 +13,18 @@ process.env.PROJECT_CWD = process.env.PWD
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/webpack.dev.js`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.WEBPACK_DEV_CONFIG = `${process.env.PROJECT_CWD}/webpack.dev.js`
-  console.log('-> using webpack.dev project config!')
+  console.log('✳️  using local webpack.dev config')
 } catch (err) {
-  console.log('-> using webpack.dev package config!')
+  console.log('⚛︎  using Taskrunner webpack.dev config!')
   process.env.WEBPACK_DEV_CONFIG = `./webpack.dev.js`
 }
 // check if we have a svg-sprite config in project root
 try {
   fs.accessSync(`${ process.env.PROJECT_CWD }/svg-sprite.config.json`, fs.constants.R_OK | fs.constants.W_OK)
   process.env.SPRITE_CONFIG = `${process.env.PROJECT_CWD}/svg-sprite.config.json`
-  console.log('-> using svg-sprite.config project config!')
+  console.log('✳️  using local svg-sprite.config !')
 } catch (err) {
-  console.log('-> using svg-sprite.config package config!')
+  console.log('⚛︎  using Taskrunner svg-sprite.config !')
   process.env.SPRITE_CONFIG = `./svg-sprite.config.json`
 }
 

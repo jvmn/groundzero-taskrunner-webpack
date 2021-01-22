@@ -91,7 +91,12 @@ module.exports = {
         test: /\.module\.scss$/,
         use: [
           // Creates `style` nodes from JS strings
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false
+            },
+          },
           // Translates CSS into CommonJS
           {
             loader: 'css-loader',
@@ -131,8 +136,13 @@ module.exports = {
       // handle global css
       {
         test: /\.global\.scss$/,
-        loader: [
-          MiniCssExtractPlugin.loader,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false
+            },
+          },
           // Translates CSS into CommonJS
           {
             loader: 'css-loader',
@@ -178,8 +188,13 @@ module.exports = {
       // handle critical/amp css
       {
         test: /\.(critical|amp)\.scss$/,
-        loader: [
-          MiniCssExtractPlugin.loader,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false
+            },
+          },
           // Translates CSS into CommonJS
           {
             loader: 'css-loader',

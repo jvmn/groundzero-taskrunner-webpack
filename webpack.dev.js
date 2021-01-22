@@ -7,11 +7,11 @@ try {
   fs.accessSync(`${process.env.PROJECT_CWD}/webpack.config.js`, fs.constants.R_OK | fs.constants.W_OK)
   const getConfigPath = () => `${process.env.PROJECT_CWD}/webpack.config.js`
   baseConfig = require(getConfigPath())
-  console.error('use webpack.base project config!')
+  console.log('✳️  using local webpack.config!')
 } catch (err) {
   const getConfigPath = () => `${process.env.PWD}/webpack.config.js`
   baseConfig = require(getConfigPath())
-  console.error('use webpack.base package config!')
+  console.log('⚛︎  using Taskrunner webpack.config!')
 }
 
 
