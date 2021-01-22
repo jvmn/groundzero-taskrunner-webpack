@@ -40,7 +40,11 @@ module.exports = {
         {
           key: 'customVar',
           cmd: 'customValue'
-        }
+        },
+        // {
+        //   key: 'project.prettyHtmlConfig',
+        //   cmd: { ocd: true, unformatted: ['script', 'style', 'code', 'pre', 'em', 'strong'] }
+        // }
       ]
     }
   }
