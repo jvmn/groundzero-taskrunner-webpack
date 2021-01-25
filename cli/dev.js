@@ -49,6 +49,10 @@ if (child.stdin) {
   process.stdin.pipe(child.stdin)
 }
 
+if (child.stderr) {
+  process.stderr.pipe(child.stderr)
+}
+
 if (child.stdout) {
   child.stdout.on('data', (data) => {
     console.log(`child stdout:\n${data}`)
