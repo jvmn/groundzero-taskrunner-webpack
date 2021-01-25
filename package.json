@@ -48,6 +48,7 @@
     "optimize:assets": "run-s copy:assets imagemin",
     "pkg:release": "groundzero-changelog",
     "pkg:publish": "npm publish --access public",
+    "pkg:publish:next": "npm publish --access public --tag next",
     "precommit": "lint-staged",
     "release": "npm-run-all clean:release copy:assets:release release:sync:icons release:webpack build:webpack fractal:export -l --silent",
     "release:cssmod": "npm-run-all clean:release copy:assets:release release:sync:icons release:webpack release:modules clean:cssmod build:webpack fractal:export -l --silent",
