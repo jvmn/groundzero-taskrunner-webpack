@@ -1,4 +1,3 @@
-console.log('using babel default')
 module.exports = function (api) {
   api.cache(true)
 
