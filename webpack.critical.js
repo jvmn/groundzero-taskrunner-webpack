@@ -74,7 +74,12 @@ module.exports = {
       {
         test: /\.critical\.scss$/,
         loader: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false
+            },
+          },
           // Translates CSS into CommonJS
           {
             loader: 'css-loader',

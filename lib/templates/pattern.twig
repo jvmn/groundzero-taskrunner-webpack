@@ -1,7 +1,7 @@
 <{{ tag }}
   class="<%= classname %>{% for modifier in modifiers %} <%= classname %>--{{ modifier }}{% endfor %}{% for state in states %} is-{{ state }}{% endfor %}{% for xclass in xclasses %} {{ xclass }}{% endfor %}"
   {% if id %}id="{{ id }}"{% endif %}
-  data-jsinit="<%= filename %>"
+  <% if (scss || js) { %>data-jsinit="<%= filename %>"<% } %>
   >
   <div class="<%= classname %>-container su-pageBox">
     <div class="<%= classname %>-box su-contentBox">

@@ -123,12 +123,12 @@ try {
 
   if (config.server) {
     fractalServerConfig = _.defaultsDeep(config.server, fractalServerConfig)
-    console.error('found Fractal server config in project!')
+    console.log('✳️  using local Fractal config!')
   }
 
   if (config.mandelbrot) {
     mandelbrotDefaults = _.defaultsDeep(config.mandelbrot, mandelbrotDefaults)
-    console.error('found Fractal mandelbrot config in project!')
+    console.log('✳️  using local mandelbrot config!')
   }
 
   const hooks = config.hooks
@@ -148,9 +148,9 @@ try {
       }
     })
   })
-  console.error('found Fractal hooks in project!')
+  console.log('✳️  using local Fractal hooks!')
 } catch (err) {
-  console.error('no hooks found in project!', err)
+  console.error(err)
 }
 
 /*
