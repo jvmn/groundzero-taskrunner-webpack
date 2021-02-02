@@ -1,4 +1,4 @@
-<div class="AP_<%= filename %> {{extclasses}}" <% if (scss || js) { %>data-jsinit="<%= filename %>"<% } %> {{{extattributes}}}>
-  <div class="AP_<%= classname %>-ct">
+<{{tag}} {{#if id}}id="{{id}}" {{/if}} class="<%= classname %>{{#if modifiers}} {{modifiers}}{{/if}}{{#if xclasses}} {{xclasses}}{{/if}}" <% if (scss || js) { %> data-jsinit="<%= filename %>"<% } %>{{#if jsInstanceId}} data-module-id="{{jsInstanceId}}"{{/if}}{{#if xclasses}} {{{xattributes}}}{{/if}}>
+  <div class="<%= classname %>-ct">
   </div>
-</div>
+</{{tag}}>
