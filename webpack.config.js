@@ -38,7 +38,7 @@ module.exports = {
   context: srcPath,
   bail: true, // force webpack to exit on error
   entry: {
-    app: './assets/js/app.' + config.taskrunner.ts ? 'ts' : 'js',
+    app: config.taskrunner.ts ? './assets/js/app.ts' : './assets/js/app.js',
     global: './globals/style/style.global.scss',
     styleguide: './styleguide/style/styleguide.global.scss',
   },
