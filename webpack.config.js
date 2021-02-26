@@ -6,6 +6,8 @@ const projectPath = require(path.resolve(process.env.PWD + '/paths.config.js'))
 const packageJson = require(path.resolve(process.env.PROJECT_CWD + '/package.json'))
 const srcPath = path.join(process.env.PROJECT_CWD, './src')
 const distPath = path.join(process.env.PROJECT_CWD, './web-ui/assets/js')
+const getProjectConfig = () => `${process.env.PROJECT_CWD}/project.config.js`
+const config = require(getProjectConfig())
 let babelConfig
 
 try {
@@ -36,9 +38,9 @@ module.exports = {
   context: srcPath,
   bail: true, // force webpack to exit on error
   entry: {
-    app: './assets/js/app.js',
+    app: './assets/js/app.' + config.taskrunner.ts ? 'ts' : 'js',
     global: './globals/style/style.global.scss',
-    styleguide: './styleguide/style/styleguide.global.scss'
+    styleguide: './styleguide/style/styleguide.global.scss',
   },
   output: {
     path: distPath,
@@ -46,7 +48,7 @@ module.exports = {
     filename: 'jvm-[name].js'
   },
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: ['.ts', '.js', '.scss'],
     alias: {
       ...aliasEntries()
     }
@@ -164,9 +166,9 @@ module.exports = {
           },
         ]
       },
-      // handle js
+      // handle js/ts
       {
-        test: /^(?!.*\.config\.js$).*\.js$/,
+        test: /^(?!.*\.config\.(ts|js)$).*\.(ts|js)$/,
         exclude: /(node_modules)/,
         /* if you decide to bundle GSAP and not use the umd verion you would need to
          * use include instead of exclude to properly babelify GSAP or it fails on older browsers.
@@ -176,11 +178,8 @@ module.exports = {
         //     /(node_modules\/gsap)/
         // ],
         use: {
-          // https://github.com/babel/babel-loader
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/env'],
-            plugins: ['@babel/plugin-syntax-dynamic-import'],
             configFile: babelConfig
           }
         }

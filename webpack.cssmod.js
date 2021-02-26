@@ -47,7 +47,7 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: ['.ts', '.js', '.scss'],
     alias: {
       ...aliasEntries()
     }
@@ -241,7 +241,7 @@ module.exports = {
   },
   stats: {
     // assets: false,
-    excludeAssets: (assetName) => assetName.includes('js'),
+    excludeAssets: (assetName) => assetName.includes('js') || assetName.includes('ts'),
     modules: false,
     chunks: false,
     cached: false,
