@@ -19,7 +19,7 @@ module.exports = merge(baseConfig, {
   mode: 'development',
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'dev' // use 'development' unless process.env.NODE_ENV is defined
+      NODE_ENV: 'development' // use 'development' unless process.env.NODE_ENV is defined
     }),
   ],
   stats: {
@@ -28,12 +28,13 @@ module.exports = merge(baseConfig, {
     cachedAssets: false,
     entrypoints: false,
     hash: false,
-    children: false,
+    children: true,
     reasons: false,
     version: false,
     outputPath: false,
     chunkOrigins: false,
-    colors: true
+    colors: true,
+    errorDetails: true
   },
   // https://webpack.js.org/configuration/devtool/ for other options
   devtool: 'eval-cheap-source-map',
