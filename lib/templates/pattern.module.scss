@@ -3,11 +3,9 @@
  */
 .<%= classname %> {
   $-<%= type.charAt(0) %>: &; // A convenient shortcut to use with modifiers #{$-c}. example below
-  position: relative;
   
-  &-ct {
-    position: relative;
-  }
+  // &__ct {
+  // }
 
   // &--mdfClass {
   //   #{$-c}-ct {

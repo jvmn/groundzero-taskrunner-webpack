@@ -1,7 +1,6 @@
 /**
  * init <%= filename %>
  * @alias <%= filename %>
- * @namespace <%= namespace %>
  * @return {Object} <% if(js){ %>public methods and css bundle<% } %><% if (!js) { %>with css bundle<% } %>
  */
 <% if (js) { %>
