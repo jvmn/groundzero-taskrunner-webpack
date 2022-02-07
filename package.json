@@ -102,7 +102,7 @@
     "@frctl/fractal": "^1.5.6",
     "@frctl/handlebars": "^1.2.9",
     "@frctl/mandelbrot": "^1.9.0",
-    "@jvmn/groundzero-changelog": "^2.0.0",
+    "@jvmn/groundzero-changelog": "^2.1.0",
     "@jvmn/upload-rsync": "^0.0.9",
     "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
